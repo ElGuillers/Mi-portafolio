@@ -1,0 +1,121 @@
+/* ── Labs ────────────────────────────────────────────────── */
+.labs-description {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 48px;
+  max-width: 650px;
+}
+
+.labs-grid {
+  display: grid;
+  gap: 20px;
+}
+
+.lab-card {
+  cursor: default;
+}
+
+.lab-card-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+
+.lab-card-icon {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--accent-muted);
+  border-radius: var(--radius-md);
+  color: var(--accent-text);
+  flex-shrink: 0;
+}
+
+.lab-card-title-area {
+  flex: 1;
+}
+
+.lab-card-name {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.lab-card-desc {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.lab-details {
+  display: grid;
+  gap: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border-secondary);
+}
+
+.lab-detail-section h4 {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--accent-text);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 8px;
+}
+
+.lab-detail-section p {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.lab-detail-section ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.lab-detail-section li {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  padding-left: 16px;
+  position: relative;
+}
+
+.lab-detail-section li::before {
+  content: '›';
+  position: absolute;
+  left: 0;
+  color: var(--accent-text);
+  font-weight: 600;
+}
+
+.lab-tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.lab-toggle {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.82rem;
+  color: var(--accent-text);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  padding: 4px 0;
+  transition: opacity var(--transition);
+}
+
+.lab-toggle:hover {
+  opacity: 0.8;
+}

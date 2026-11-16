@@ -1,0 +1,122 @@
+/* ── Navbar ──────────────────────────────────────────────── */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: var(--nav-bg);
+  backdrop-filter: var(--backdrop);
+  -webkit-backdrop-filter: var(--backdrop);
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--transition), background var(--transition);
+}
+
+.navbar.scrolled {
+  border-bottom-color: var(--border-primary);
+}
+
+.navbar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+
+.navbar-logo {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  text-decoration: none;
+  letter-spacing: -0.02em;
+  transition: opacity var(--transition);
+}
+
+.navbar-logo:hover {
+  opacity: 0.8;
+  color: var(--text-primary);
+}
+
+.navbar-logo span {
+  color: var(--accent);
+}
+
+/* Desktop nav */
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  list-style: none;
+}
+
+.navbar-link {
+  padding: 6px 14px;
+  font-size: 0.85rem;
+  font-weight: 450;
+  color: var(--text-secondary);
+  text-decoration: none;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition);
+}
+
+.navbar-link:hover {
+  color: var(--text-primary);
+  background: var(--bg-hover);
+}
+
+.navbar-link.active {
+  color: var(--text-primary);
+}
+
+/* Controls */
+.navbar-controls {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Mobile hamburger */
+.navbar-hamburger {
+  display: none;
+}
+
+/* Mobile menu */
+.navbar-mobile {
+  display: none;
+  position: fixed;
+  top: 64px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--bg-primary);
+  padding: 24px;
+  z-index: 99;
+}
+
+.navbar-mobile.open {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.navbar-mobile .navbar-link {
+  display: block;
+  padding: 14px 16px;
+  font-size: 1rem;
+  border-radius: var(--radius-md);
+}
+
+.navbar-mobile .navbar-link:hover,
+.navbar-mobile .navbar-link.active {
+  background: var(--bg-hover);
+}
+
+@media (max-width: 900px) {
+  .navbar-links {
+    display: none;
+  }
+
+  .navbar-hamburger {
+    display: flex;
+  }
+}
