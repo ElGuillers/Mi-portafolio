@@ -21,7 +21,7 @@ export interface Project {
   }
   status: ProjectStatus
   repoUrl?: string
-  demoUrl?: string
+  demoUrl?: string // Enlace a la ejecución / demo en vivo
 }
 
 // Categorías para filtros (con traducciones)
@@ -61,6 +61,7 @@ export const projects: Project[] = [
     },
     status: 'completed',
     repoUrl: 'https://github.com/ElGuillers/Satisfactory-Planning',
+    demoUrl: '', // <-- INSERTA AQUÍ EL LINK DE EJECUCIÓN (ej: 'https://tu-demo.vercel.app')
   },
   {
     id: 'financial-app',
@@ -88,6 +89,7 @@ export const projects: Project[] = [
     },
     status: 'completed',
     repoUrl: 'https://github.com/ElGuillers/FinancialApp',
+    demoUrl: '', // <-- INSERTA AQUÍ EL LINK DE EJECUCIÓN (ej: 'https://tu-financial-app.vercel.app')
   },
   {
     id: 'fourier-image-audio',
@@ -115,6 +117,7 @@ export const projects: Project[] = [
     },
     status: 'completed',
     repoUrl: 'https://github.com/ElGuillers/Especiales-trabajo-final',
+    demoUrl: '', // <-- INSERTA AQUÍ EL LINK DE EJECUCIÓN (ej: Google Colab, notebook o demo web)
   },
   {
     id: 'colombiapoly',
@@ -140,5 +143,6 @@ export const projects: Project[] = [
     },
     status: 'completed',
     repoUrl: 'https://github.com/ElGuillers/Colombiapoly',
+    demoUrl: '', // <-- INSERTA AQUÍ EL LINK DE EJECUCIÓN (ej: web build, video o demo ejecutable)
   },
 ]

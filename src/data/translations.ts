@@ -36,6 +36,7 @@ export interface Translations {
     filterAll: string
     viewRepo: string
     viewDemo: string
+    demoPlaceholder: string
     status: {
       development: string
       completed: string
@@ -129,8 +130,9 @@ const es: Translations = {
   projects: {
     sectionTitle: 'Proyectos destacados',
     filterAll: 'Todos',
-    viewRepo: 'Ver repositorio',
-    viewDemo: 'Ver demo',
+    viewRepo: 'Ver código',
+    viewDemo: 'Ver ejecución',
+    demoPlaceholder: 'Ejecución (Próximamente)',
     status: {
       development: 'En desarrollo',
       completed: 'Completado',
@@ -224,8 +226,9 @@ const en: Translations = {
   projects: {
     sectionTitle: 'Featured Projects',
     filterAll: 'All',
-    viewRepo: 'View repository',
-    viewDemo: 'View demo',
+    viewRepo: 'View code',
+    viewDemo: 'Live execution',
+    demoPlaceholder: 'Execution (Coming soon)',
     status: {
       development: 'In development',
       completed: 'Completed',
