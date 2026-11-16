@@ -59,156 +59,86 @@ export function Projects() {
         {/* Grid */}
         {filteredProjects.length > 0 ? (
           <div className="projects-grid">
-                {filteredProjects.map((project, i) => {
-                  const primaryLink = project.demoUrl || project.repoUrl
+              {
+                filteredProjects.map((project, i) => (
+                  <div
+                    key={project.id}
+                    className={`card project-card fade-in fade-in-delay-${Math.min(i + 1, 4)} ${isVisible ? 'visible' : ''}`}
+                  >
+                    {/* Image: clean visual preview without overlapping links */}
+                    <div className="project-card-image">
+                      {project.image ? (
+                        <img src={getImageUrl(project.image)} alt={project.name} loading="lazy" />
+                      ) : (
+                        <FolderCode size={40} className="placeholder-icon" />
+                      )}
+                    </div>
 
-                  return (
-                    <div
-                      key={project.id}
-                      className={`card project-card fade-in fade-in-delay-${Math.min(i + 1, 4)} ${isVisible ? 'visible' : ''}`}
-                    >
-                      {/* Image with hover link overlay */}
-                      <div className="project-card-image">
-                        {project.image ? (
-                          primaryLink ? (
-                            <a
-                              href={primaryLink}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="project-image-link"
-                              title={project.demoUrl ? t.projects.viewDemo : t.projects.viewRepo}
-                            >
-                              <img src={getImageUrl(project.image)} alt={project.name} loading="lazy" />
-                              <div className="project-image-overlay">
-                                <span className="project-overlay-badge">
-                                  <ExternalLink size={15} />
-                                  {project.demoUrl ? t.projects.viewDemo : t.projects.viewRepo}
-                                </span>
-                              </div>
-                            </a>
-                          ) : (
-                            <img src={getImageUrl(project.image)} alt={project.name} loading="lazy" />
-                          )
-                        ) : (
-                          <FolderCode size={40} className="placeholder-icon" />
-                        )}
-                      </div>
-
-                      {/* Header with Title, Status & Quick Action Icons */}
+                      {/* Header: Title and Status */}
                       <div className="project-card-header">
-                        <div>
-                          <h3 className="project-card-name">{project.name}</h3>
-                          <span className={`status-badge ${project.status}`}>
-                            {statusLabel(project.status)}
-                          </span>
-                        </div>
-
-                            {/* Quick Link Icons */}
-                            <div className="project-card-links">
-                              {project.demoUrl ? (
-                                <a
-                                  href={project.demoUrl}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  className="project-icon-link demo"
-                                  title={`${t.projects.viewDemo} (${project.name})`}
-                                  aria-label={t.projects.viewDemo}
-                                >
-                                  <ExternalLink size={17} />
-                                </a>
-                              ) : (
-                                <span
-                                  className="project-icon-link disabled"
-                                  title={`${t.projects.demoPlaceholder} — Inserta el enlace en projects.ts`}
-                                  aria-label={t.projects.demoPlaceholder}
-                                >
-                                  <ExternalLink size={17} />
-                                </span>
-                              )}
-
-                              {project.repoUrl && (
-                                <a
-                                  href={project.repoUrl}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  className="project-icon-link"
-                                  title={`${t.projects.viewRepo} (${project.name})`}
-                                  aria-label={t.projects.viewRepo}
-                                >
-                                  <Github size={17} />
-                                </a>
-                              )}
-                            </div>
-                          </div>
+                        <h3 className="project-card-name">{project.name}</h3>
+                        <span className={`status-badge ${project.status}`}>
+                          {statusLabel(project.status)}
+                        </span>
+                      </div>
 
                         {/* Description */}
                         <p className="project-card-desc">{project.description[language]}</p>
 
-                          {/* Features */ }
-                  {project.features[language].length > 0 && (
-                          <div className="project-card-features">
-                            <h4>{t.projects.features}</h4>
-                            <ul>
-                              {project.features[language].map((feat, idx) => (
-                                <li key={idx}>{feat}</li>
-                              ))}
-                            </ul>
-                          </div>
-                        )}
+                          {/* Features */}
+                          {project.features[language].length > 0 && (
+                            <div className="project-card-features">
+                              <h4>{t.projects.features}</h4>
+                              <ul>
+                                {project.features[language].map((feat, idx) => (
+                                  <li key={idx}>{feat}</li>
+                                ))}
+                              </ul>
+                            </div>
+                          )}
 
-                        {/* Technologies */}
-                        <div className="project-card-tech">
-                          {project.technologies.map(tech => (
-                            <span key={tech} className="tag">{tech}</span>
-                          ))}
-                        </div>
+                      {/* Technologies */}
+                      <div className="project-card-tech">
+                        {project.technologies.map(tech => (
+                          <span key={tech} className="tag">{tech}</span>
+                        ))}
+                      </div>
 
-                        {/* Bottom Action Buttons */}
+                      {/* Actions: single dedicated action bar */}
+                      {(project.repoUrl || project.demoUrl) && (
                         <div className="project-card-actions">
-                            {
-                              project.demoUrl ? (
-                                <a
-                                  href={project.demoUrl}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  className="btn btn-primary"
-                                >
-                                  <ExternalLink size={15} />
-                                  {t.projects.viewDemo}
-                                </a>
-                              ) : (
-                                <span
-                                  className="btn btn-secondary btn-disabled"
-                                  title="Configura el link en src/data/projects.ts"
-                                >
-                                  <ExternalLink size={15} />
-                                  {t.projects.demoPlaceholder}
-                                </span>
-                              )
-                            }
+                          {project.demoUrl && (
+                            <a
+                              href={project.demoUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="btn btn-primary"
+                            >
+                              <ExternalLink size={15} />
+                              {t.projects.viewDemo}
+                            </a>
+                          )}
 
-                            {
-                              project.repoUrl && (
-                                <a
-                                  href={project.repoUrl}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  className="btn btn-secondary"
-                                >
-                                  <Github size={15} />
-                                  {t.projects.viewRepo}
-                                </a>
-                              )
-                            }
-                  </div>
+                            {project.repoUrl && (
+                              <a
+                                href={project.repoUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="btn btn-secondary"
+                              >
+                                <Github size={15} />
+                                {t.projects.viewRepo}
+                              </a>
+                            )}
+                          </div>
+                )}
                     </div>
-                  )
-                })}
-              </div>
-            ) : (
+            ))}
+                  </div>
+                ) : (
             <p className="projects-empty">{t.projects.emptyState}</p>
         )}
-          </div>
+      </div>
     </section>
   )
 }
