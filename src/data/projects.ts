@@ -117,7 +117,7 @@ export const projects: Project[] = [
     },
     status: 'completed',
     repoUrl: 'https://github.com/ElGuillers/Especiales-trabajo-final',
-    demoUrl: '', // <-- INSERTA AQUÍ EL LINK DE EJECUCIÓN (ej: Google Colab, notebook o demo web)
+    demoUrl: 'https://especiales-trabajo-final-mfipnabqecr7nj9jsy7wg5.streamlit.app/', // <-- INSERTA AQUÍ EL LINK DE EJECUCIÓN (ej: Google Colab, notebook o demo web)
   },
   {
     id: 'colombiapoly',
