@@ -172,6 +172,7 @@ code {
 /* ── Section ─────────────────────────────────────────────── */
 .section {
   padding: 100px 0;
+  scroll-margin-top: 72px;
 }
 
 .section-header {

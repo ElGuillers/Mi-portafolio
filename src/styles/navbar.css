@@ -14,6 +14,7 @@
 
 .navbar.scrolled {
   border-bottom-color: var(--border-primary);
+  box-shadow: var(--shadow-sm);
 }
 
 .navbar-inner {
@@ -21,6 +22,7 @@
   align-items: center;
   justify-content: space-between;
   height: 64px;
+  gap: 16px;
 }
 
 .navbar-logo {
@@ -30,6 +32,7 @@
   text-decoration: none;
   letter-spacing: -0.02em;
   transition: opacity var(--transition);
+  flex-shrink: 0;
 }
 
 .navbar-logo:hover {
@@ -41,22 +44,30 @@
   color: var(--accent);
 }
 
-/* Desktop nav */
+/* Horizontal nav */
 .navbar-links {
   display: flex;
   align-items: center;
   gap: 4px;
   list-style: none;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.navbar-links::-webkit-scrollbar {
+  display: none;
 }
 
 .navbar-link {
-  padding: 6px 14px;
+  padding: 6px 12px;
   font-size: 0.85rem;
   font-weight: 450;
   color: var(--text-secondary);
   text-decoration: none;
   border-radius: var(--radius-sm);
   transition: all var(--transition);
+  white-space: nowrap;
 }
 
 .navbar-link:hover {
@@ -66,57 +77,26 @@
 
 .navbar-link.active {
   color: var(--text-primary);
+  background: var(--bg-hover);
+  font-weight: 500;
 }
 
 /* Controls */
 .navbar-controls {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 6px;
+  flex-shrink: 0;
 }
 
-/* Mobile hamburger */
-.navbar-hamburger {
-  display: none;
-}
 
-/* Mobile menu */
-.navbar-mobile {
-  display: none;
-  position: fixed;
-  top: 64px;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: var(--bg-primary);
-  padding: 24px;
-  z-index: 99;
-}
+    @media (max-width: 820px) {
+      .navbar-inner {
+        gap: 8px;
+      }
 
-.navbar-mobile.open {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.navbar-mobile .navbar-link {
-  display: block;
-  padding: 14px 16px;
-  font-size: 1rem;
-  border-radius: var(--radius-md);
-}
-
-.navbar-mobile .navbar-link:hover,
-.navbar-mobile .navbar-link.active {
-  background: var(--bg-hover);
-}
-
-@media (max-width: 900px) {
-  .navbar-links {
-    display: none;
-  }
-
-  .navbar-hamburger {
-    display: flex;
-  }
-}
+        .navbar-link {
+          padding: 6px 8px;
+          font-size: 0.8rem;
+        }
+      }

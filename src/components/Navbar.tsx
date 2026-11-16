@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Menu, X, Sun, Moon, Languages } from 'lucide-react'
+import { Sun, Moon, Languages } from 'lucide-react'
 import { useLanguage } from '../hooks/useLanguage'
 import { useTheme } from '../hooks/useTheme'
 import { useActiveSection } from '../hooks/useActiveSection'
@@ -13,26 +13,12 @@ export function Navbar() {
   const { theme, toggleTheme } = useTheme()
   const activeSection = useActiveSection(SECTION_IDS)
   const [scrolled, setScrolled] = useState(false)
-  const [mobileOpen, setMobileOpen] = useState(false)
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20)
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
-
-  // Close mobile menu on resize
-  useEffect(() => {
-    const onResize = () => { if (window.innerWidth > 900) setMobileOpen(false) }
-    window.addEventListener('resize', onResize)
-    return () => window.removeEventListener('resize', onResize)
-  }, [])
-
-  // Prevent body scroll when mobile menu is open
-  useEffect(() => {
-    document.body.style.overflow = mobileOpen ? 'hidden' : ''
-    return () => { document.body.style.overflow = '' }
-  }, [mobileOpen])
 
   const navItems = [
     { id: 'about', label: t.nav.about },
@@ -45,7 +31,6 @@ export function Navbar() {
   ]
 
   const handleNavClick = (id: string) => {
-    setMobileOpen(false)
     const el = document.getElementById(id)
     if (el) el.scrollIntoView({ behavior: 'smooth' })
   }
@@ -65,7 +50,7 @@ export function Navbar() {
           {siteConfig.shortName}<span>.</span>
         </a>
 
-        {/* Desktop links */}
+        {/* Horizontal Navigation Links */}
         <ul className="navbar-links">
           {navItems.map(item => (
             <li key={item.id}>
@@ -83,7 +68,7 @@ export function Navbar() {
           ))}
         </ul>
 
-        {/* Controls */}
+        {/* Controls: Language & Theme */}
         <div className="navbar-controls">
           <button
             className="btn-icon"
@@ -102,33 +87,7 @@ export function Navbar() {
           >
             {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
           </button>
-
-          <button
-            className="btn-icon navbar-hamburger"
-            onClick={() => setMobileOpen(!mobileOpen)}
-            aria-label="Menu"
-            aria-expanded={mobileOpen}
-          >
-            {mobileOpen ? <X size={20} /> : <Menu size={20} />}
-          </button>
         </div>
-      </div>
-
-      {/* Mobile menu */}
-      <div className={`navbar-mobile ${mobileOpen ? 'open' : ''}`}>
-        {navItems.map(item => (
-          <a
-            key={item.id}
-            href={`#${item.id}`}
-            className={`navbar-link ${activeSection === item.id ? 'active' : ''}`}
-            onClick={(e) => {
-              e.preventDefault()
-              handleNavClick(item.id)
-            }}
-          >
-            {item.label}
-          </a>
-        ))}
       </div>
     </nav>
   )
