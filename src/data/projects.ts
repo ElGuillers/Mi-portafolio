@@ -61,7 +61,7 @@ export const projects: Project[] = [
     },
     status: 'completed',
     repoUrl: 'https://github.com/ElGuillers/Satisfactory-Planning',
-    demoUrl: '', // <-- INSERTA AQUÍ EL LINK DE EJECUCIÓN (ej: 'https://tu-demo.vercel.app')
+    demoUrl: 'https://satisfactory-planning.vercel.app/', // <-- INSERTA AQUÍ EL LINK DE EJECUCIÓN (ej: 'https://tu-demo.vercel.app')
   },
   {
     id: 'financial-app',
@@ -89,7 +89,7 @@ export const projects: Project[] = [
     },
     status: 'completed',
     repoUrl: 'https://github.com/ElGuillers/FinancialApp',
-    demoUrl: '', // <-- INSERTA AQUÍ EL LINK DE EJECUCIÓN (ej: 'https://tu-financial-app.vercel.app')
+    demoUrl: 'https://financial-app-henna-alpha.vercel.app/', // <-- INSERTA AQUÍ EL LINK DE EJECUCIÓN (ej: 'https://tu-financial-app.vercel.app')
   },
   {
     id: 'fourier-image-audio',
